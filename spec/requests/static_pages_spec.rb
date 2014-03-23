@@ -19,9 +19,14 @@ describe "StaticPages" do
       visit '/static_pages/help'
       expect(page).to have_content('Help')
     end
-    it "should have the right title" do
+    it "should have the base title" do
       visit '/static_pages/help'
-      expect(page).to have_title("Ruby on Rails Tutorial Sample App | Help")
+      expect(page).to have_title("Ruby on Rails Tutorial Sample App")
+    end
+    
+    it "should not have a custom page title" do
+      visit '/static_pages/help'
+      expect(page).not_to have_title('| Help')
     end
   end
   
